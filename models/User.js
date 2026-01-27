@@ -1,8 +1,8 @@
 const bcrypt = require("bcryptjs");
-const moongoose = require("mongoose");
+const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 
-const UserSchema = new moongoose.Schema({
+const UserSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, "Please provide a name"],
@@ -43,4 +43,4 @@ UserSchema.methods.comparePassword = async function (candidatePassword) {
   return isMatch;
 };
 
-module.exports = moongoose.model("User", UserSchema);
+module.exports = mongoose.model("User", UserSchema);

@@ -2,11 +2,12 @@ const Exercise = require("../models/Exercises");
 const { StatusCodes } = require("http-status-codes");
 const { BadRequestError, NotFoundError } = require("../errors");
 
-const getAllJobs = async (req, res) => {
-  res.send("get all jobs");
+const getAllExercises = async (req, res) => {
+  const exercises = await Exercise.find({ createdBy: req.user.userId });
+  res.status(StatusCodes.OK).json({ exercises, count: exercises.length });
 };
 
-const getJob = async (req, res) => {
+const getExercise = async (req, res) => {
   res.send("get job");
 };
 
@@ -16,12 +17,18 @@ const createExercise = async (req, res) => {
   res.status(StatusCodes.CREATED).json({ exercise });
 };
 
-const updateJob = async (req, res) => {
+const updateExercise = async (req, res) => {
   res.send("update Job");
 };
 
-const deleteJob = async (req, res) => {
+const deleteExercise = async (req, res) => {
   res.send("delete job");
 };
 
-module.exports = { getAllJobs, getJob, createExercise, updateJob, deleteJob };
+module.exports = {
+  getAllExercises,
+  getExercise,
+  createExercise,
+  updateExercise,
+  deleteExercise,
+};

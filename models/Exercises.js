@@ -1,33 +1,30 @@
-const { required } = require("joi");
-const { default: mongoose } = require("mongoose");
-const moongoose = require("mongoose");
-
-const ExerciseSchema = new moongoose.Schema(
+const mongoose = require("mongoose");
+const ExerciseSchema = new mongoose.Schema(
   {
     exerciseName: {
       type: String,
-      requried: [true, "Please provide exercise name"],
+      required: [true, "Please provide exercise name"],
       maxlength: 50,
     },
     bodyPart: {
       type: String,
-      requried: [
+      required: [
         true,
         "Please provide what part of the body the exercise targets",
       ],
       maxlength: 50,
     },
-    personalBeststatus: {
+    personalBestStatus: {
       type: String,
       enum: [
-        "New persaonal record",
+        "New personal record",
         "No personal Record",
-        "bad sessions regressed",
+        "Bad sessions regressed",
       ],
       default: "No personal Record",
     },
     createdBy: {
-      type: moongoose.Types.ObjectId,
+      type: mongoose.Types.ObjectId,
       ref: "User",
       required: [true, "Please provide user"],
     },
