@@ -18,7 +18,7 @@ const ExerciseSchema = new mongoose.Schema(
       type: String,
       enum: [
         "New personal record",
-        "No personal Record",
+        "No personal record",
         "Bad sessions regressed",
       ],
       default: "No personal Record",
