@@ -8,7 +8,21 @@ const getAllExercises = async (req, res) => {
 };
 
 const getExercise = async (req, res) => {
-  res.send("get job");
+  const {
+    user: { userId },
+    params: { id: exerciseId },
+  } = req;
+
+  const exercise = await Exercise.findOne({
+    _id: exerciseId,
+    createdBy: userId,
+  });
+
+  if (!exercise) {
+    throw new NotFoundError(`No exercise with id ${exerciseId}`);
+  }
+
+  res.status(StatusCodes.OK).json({ exercise });
 };
 
 const createExercise = async (req, res) => {
@@ -18,11 +32,46 @@ const createExercise = async (req, res) => {
 };
 
 const updateExercise = async (req, res) => {
-  res.send("update Job");
+  const {
+    body: { exerciseName, bodyPart },
+    user: { userId },
+    params: { id: exerciseId },
+  } = req;
+
+  if (exerciseName === " " || bodyPart === " ") {
+    throw new BadRequestError(
+      "exerciseName or bodyPart Position field cannot be empty",
+    );
+  }
+
+  const exercise = await Exercise.findByIdAndUpdate(
+    { _id: exerciseId, createdBy: userId },
+    req.body,
+    { new: true, runValidators: true },
+  );
+
+  if (!exercise) {
+    throw new NotFoundError(`No exercise with id ${exerciseId}`);
+  }
+
+  res.status(StatusCodes.OK).json({ exercise });
 };
 
 const deleteExercise = async (req, res) => {
-  res.send("delete job");
+  const {
+    user: { userId },
+    params: { id: exerciseId },
+  } = req;
+
+  const exercise = await Exercise.findByIdAndDelete({
+    _id: exerciseId,
+    createdBy: userId,
+  });
+  if (!exercise) {
+    throw new NotFoundError(`No exercise with id ${exerciseId}`);
+  }
+
+  res.status(StatusCodes.OK).send();
 };
 
 module.exports = {

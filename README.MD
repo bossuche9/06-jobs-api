@@ -67,3 +67,6 @@ Swagger UI
       required: true
       description: the job id
 ```
+
+Render URI
+https://exercises-api-uchenna-obi.onrender.com/
