@@ -21,7 +21,7 @@ const ExerciseSchema = new mongoose.Schema(
         "No personal record",
         "Bad sessions regressed",
       ],
-      default: "No personal Record",
+      default: "No personal record",
     },
     createdBy: {
       type: mongoose.Types.ObjectId,
