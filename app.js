@@ -41,6 +41,8 @@ app.use("/api/v1/exercises", authenticateUser, exercisesRouter);
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
+app.use(express.static("public"));
+
 const port = process.env.PORT || 3000;
 
 const start = async () => {
