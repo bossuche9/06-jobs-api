@@ -11,7 +11,7 @@ export const handleDelete = () => {
       if (e.target.classList.contains("deleteButton")) {
         enableInput(false);
 
-        let method = "DELETE";
+        const method = "DELETE";
         const exerciseId = e.target.dataset.id;
         const url = `/api/v1/exercises/${exerciseId}`;
 
