@@ -27,6 +27,8 @@ app.use(
     max: 100,
   }),
 );
+
+app.use(express.static("./public"));
 app.use(express.json());
 app.use(helmet());
 app.use(cors());
@@ -40,8 +42,6 @@ app.use("/api/v1/exercises", authenticateUser, exercisesRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
-
-app.use(express.static("public"));
 
 const port = process.env.PORT || 3000;
 
