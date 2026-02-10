@@ -68,9 +68,9 @@ export const showExercises = async () => {
           let editButton = `<td><button type="button" class="editButton" data-id=${data.exercises[i]._id}>edit</button></td>`;
           let deleteButton = `<td><button type="button" class="deleteButton" data-id=${data.exercises[i]._id}>delete</button></td>`;
           let rowHTML = `
-            <td>${data.exercises[i].company}</td>
-            <td>${data.exercises[i].position}</td>
-            <td>${data.exercises[i].status}</td>
+            <td>${data.exercises[i].exerciseName}</td>
+            <td>${data.exercises[i].bodyPart}</td>
+            <td>${data.exercises[i].personalBestStatus}</td>
             <div>${editButton}${deleteButton}</div>`;
 
           rowEntry.innerHTML = rowHTML;

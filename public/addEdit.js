@@ -95,9 +95,9 @@ export const showAddEdit = async (exerciseId) => {
 
       const data = await response.json();
       if (response.status === 200) {
-        exerciseName.value = data.exercise.company;
-        bodyPart.value = data.exercise.position;
-        personalBestStatus.value = data.exercise.status;
+        exerciseName.value = data.exercise.exerciseName;
+        bodyPart.value = data.exercise.bodyPart;
+        personalBestStatus.value = data.exercise.personalBestStatus;
         addingExercise.textContent = "update";
         message.textContent = "";
         addEditDiv.dataset.id = exerciseId;
