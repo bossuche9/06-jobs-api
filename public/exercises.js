@@ -16,13 +16,13 @@ let exercisesTableHeader = null;
 export const handleExercises = () => {
   exercisesDiv = document.getElementById("exercises");
   const logoff = document.getElementById("logoff");
-  const addJob = document.getElementById("add-exercise");
+  const addExercise = document.getElementById("add-exercise");
   exercisesTable = document.getElementById("exercises-table");
   exercisesTableHeader = document.getElementById("exercises-table-header");
 
   exercisesDiv.addEventListener("click", (e) => {
     if (inputEnabled && e.target.nodeName === "BUTTON") {
-      if (e.target === addJob) {
+      if (e.target === addExercise) {
         showAddEdit(null);
       } // else if (e.target === logoff) {
       // showLoginRegister();

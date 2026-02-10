@@ -31,6 +31,7 @@ import { showLoginRegister, handleLoginRegister } from "./loginRegister.js";
 import { handleLogin } from "./login.js";
 import { handleAddEdit } from "./addEdit.js";
 import { handleRegister } from "./register.js";
+import { handleDelete } from "./deleteExercise.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   token = localStorage.getItem("token");
@@ -40,6 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
   handleExercises();
   handleRegister();
   handleAddEdit();
+  handleDelete();
   if (token) {
     showExercises();
   } else {
